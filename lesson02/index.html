@@ -17,12 +17,16 @@
 </script>
 
 <script id="shader-vs" type="x-shader/x-vertex">
+//varying inputs: those vary from vertex to vertex and a linear
+//interpolation os passed to each pixel (i.e fragment)
     attribute vec3 aVertexPosition;
     attribute vec4 aVertexColor;
 
+//uniform inputs:
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
 
+//varying output: 
     varying vec4 vColor;
 
     void main(void) {
@@ -131,7 +135,7 @@
         triangleVertexPositionBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
         var vertices = [
-             0.0,  1.0,  0.0,
+             3.0,  1.0,  -1.0,
             -1.0, -1.0,  0.0,
              1.0, -1.0,  0.0
         ];
@@ -142,7 +146,7 @@
         triangleVertexColorBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer);
         var colors = [
-            1.0, 0.0, 0.0, 1.0,
+            1.0, 0.0, 0.0, 0.1,
             0.0, 1.0, 0.0, 1.0,
             0.0, 0.0, 1.0, 1.0
         ];
